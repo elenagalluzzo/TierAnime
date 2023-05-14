@@ -29,6 +29,11 @@ class TierViewController: UIViewController {
                 controller.delegate = self
             }
         }
+        if segue.identifier == "showDescriptionFromTier" {
+            if let destinationVC = segue.destination as? DescriptionViewController, let rowData = sender as? Data {
+                destinationVC.animeData = rowData
+            }
+        }
     }
     
     func loadData() {
@@ -66,7 +71,11 @@ extension TierViewController: UITableViewDataSource, UITableViewDelegate {
         cell.updateCell(model: currentRowData)
         return cell
     }
-        
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentRowData = tierArray[indexPath.row]
+        performSegue(withIdentifier: "showDescriptionFromTier", sender: currentRowData)
+    }
 }
 
 

@@ -64,7 +64,6 @@
                                             <outlet property="animeImage" destination="ZFC-59-nKg" id="rcJ-9T-Amp"/>
                                             <outlet property="starRatingBar" destination="hMA-2V-89C" id="8un-kh-Uck"/>
                                             <outlet property="titleLabel" destination="gHd-25-VAr" id="Zcy-Fu-7KN"/>
-                                            <segue destination="Thn-bK-XDx" kind="presentation" id="iIL-wq-aX7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -88,6 +87,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tierTableView" destination="ucl-ZA-80U" id="tiH-w6-mp0"/>
+                        <segue destination="Thn-bK-XDx" kind="presentation" identifier="showDescriptionFromTier" id="dm8-3Q-elh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -116,6 +116,10 @@
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NQt-ns-fuL">
                                         <rect key="frame" x="70" y="58" width="253" height="296"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="253" id="AC9-ac-zhS"/>
+                                            <constraint firstAttribute="height" constant="296" id="htx-HF-6y4"/>
+                                        </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXg-m2-5I5">
                                         <rect key="frame" x="96.666666666666686" y="362" width="200" height="50"/>
@@ -180,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQS-tr-mZX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3265" y="-338"/>
+            <point key="canvasLocation" x="2123" y="494"/>
         </scene>
         <!--Search-->
         <scene sceneID="4oY-4N-IPh">
@@ -301,7 +305,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iIL-wq-aX7"/>
+        <segue reference="dm8-3Q-elh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
