@@ -19,12 +19,3 @@ struct Data: Codable {
     let synopsis: String
     let rating: Int?
 }
-
-//struct SavedData: Codable {
-//    let title: String
-//    let genres: [String]
-//    let episodes: Int
-//    let image: String
-//    let synopsis: String
-//    let rating: Int?
-//}

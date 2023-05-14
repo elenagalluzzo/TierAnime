@@ -89,7 +89,7 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
-extension SearchViewController: ResultsCellDelegate, AnimeInfoDelegate {
+extension SearchViewController: ResultsCellDelegate {
     func addAnime(animeData: Data) {
         let alert = UIAlertController(title: "Add to your Anime Tier List", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Anime", style: .default) { (action) in

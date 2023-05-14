@@ -21,8 +21,9 @@ class AnimeApi: NSObject {
             "X-RapidAPI-Key": apiKey,
             "X-RapidAPI-Host": "anime-db.p.rapidapi.com"
         ]
+        let escapedAddress = title.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
-        guard let url = URL(string: "https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=\(title)")
+        guard let url = URL(string: "https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=\(escapedAddress ?? "Hunter")")
         else {
             return
         }

@@ -37,7 +37,7 @@ class TierViewController: UIViewController {
     }
     
     func loadData() {
-        database.collection("Data").order(by: "Rating").addSnapshotListener() { (querySnapshot, error) in
+        database.collection("Data").order(by: "Rating", descending: true).addSnapshotListener() { (querySnapshot, error) in
                     self.tierArray = []
             
             if let error = error {

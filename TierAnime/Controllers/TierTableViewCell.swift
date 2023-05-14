@@ -13,19 +13,22 @@ class TierTableViewCell: UITableViewCell {
     @IBOutlet weak var animeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starRatingBar: AARatingBar!
-    
+    var isFromTableViewLoad = true
     let database = Firestore.firestore()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func updateCell(model: Data) {
         titleLabel.text = model.title
         animeImage?.imageFromURL(urlString: model.image, PlaceHolderImage: UIImage.init(named: "placeholderImage")!)
-
+        starRatingBar.value = CGFloat(model.rating ?? 0)
         starRatingBar.ratingDidChange = { ratingValue in
+            guard self.isFromTableViewLoad else {
+                self.isFromTableViewLoad = false
+                return
+            }
             self.database.collection("Data").whereField("Title", isEqualTo: model.title).getDocuments() { (querySnapshot, error) in
                 if let error = error {
                     print("Error updating document: \(error)")

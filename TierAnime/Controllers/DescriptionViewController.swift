@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol AnimeInfoDelegate: AnyObject {
-    func addAnime(animeData: Data)
-}
-
 class DescriptionViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,7 +14,7 @@ class DescriptionViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var animeImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    weak var delegate: AnimeInfoDelegate?
+
     var animeData: Data?
     
     override func viewDidLoad() {
@@ -38,12 +34,5 @@ class DescriptionViewController: UIViewController {
         }
         episodesLabel.text = "Episodes: \(model.episodes)"
         animeImage?.imageFromURL(urlString: model.image, PlaceHolderImage: UIImage.init(named: "placeholderImage")!)
-    }
-    
-    @IBAction func addAnime(_ sender: Any) {
-        if let animeData = animeData {
-            delegate?.addAnime(animeData: animeData)
-            self.dismiss(animated: true)
-        }
     }
 }
