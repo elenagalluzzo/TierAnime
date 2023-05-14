@@ -48,16 +48,13 @@ class SearchViewController: UIViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDescriptionFromSearch" {
+            if let destinationVC = segue.destination as? DescriptionViewController, let rowData = sender as? Data {
+                destinationVC.animeData = rowData
+            }
+        }
     }
-    */
-
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -71,8 +68,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.updateCell(model: currentRowData)
         cell.delegate = self
         return cell
-    }    
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentRowData = animeModelArray[indexPath.row]
+        performSegue(withIdentifier: "showDescriptionFromSearch", sender: currentRowData)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -88,9 +89,8 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
-extension SearchViewController: ResultsCellDelegate {
+extension SearchViewController: ResultsCellDelegate, AnimeInfoDelegate {
     func addAnime(animeData: Data) {
-        //save data in base
         let alert = UIAlertController(title: "Add to your Anime Tier List", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Anime", style: .default) { (action) in
             self.navigationController?.popViewController(animated: true)

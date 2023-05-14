@@ -33,7 +33,7 @@ class TierViewController: UIViewController {
     
     func loadData() {
         database.collection("Data").order(by: "Rating").addSnapshotListener() { (querySnapshot, error) in
-            self.tierArray = []
+                    self.tierArray = []
             
             if let error = error {
                 print("Error getting documents: \(error)")
@@ -54,6 +54,7 @@ class TierViewController: UIViewController {
     }
 }
 
+
 extension TierViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tierArray.count
@@ -67,6 +68,7 @@ extension TierViewController: UITableViewDataSource, UITableViewDelegate {
     }
         
 }
+
 
 extension TierViewController: SearchViewControllerDelegate {
     func addAnime(animeData: Data) {
